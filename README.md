@@ -1,2 +1,2 @@
-# client-db
-Client database
+# Client database
+Сarsharing customer database.
