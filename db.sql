@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS BankCard;
 DROP TABLE IF EXISTS VehicleCategory;
 DROP TABLE IF EXISTS DrivingLicense;
+DROP TABLE IF EXISTS Passport;
 DROP TABLE IF EXISTS Client;
 
 CREATE TABLE Client (
@@ -84,4 +85,26 @@ CREATE TABLE VehicleCategory (
     PRIMARY KEY (designation, driving_license_series_number),
     FOREIGN KEY (driving_license_series_number) 
         REFERENCES DrivingLicense (series_number)
+);
+
+CREATE TABLE Passport (
+    series_number TEXT CHECK (
+        series_number REGEXP
+        '\d{10}$'
+    ),
+    issued_by TEXT NOT NULL,
+    unit_code TEXT CHECK (
+        unit_code REGEXP
+        '\d{6}$'
+    ),
+    surname TEXT NOT NULL,
+    name TEXT NOT NULL,
+    patronymic TEXT NOT NULL,
+    birth_date DATE NOT NULL,
+    birth_place TEXT NOT NULL,
+    photo_link TEXT NOT NULL,
+    client_id INTEGER,
+
+    PRIMARY KEY (series_number),
+    FOREIGN KEY (client_id) REFERENCES Client (id) 
 );
