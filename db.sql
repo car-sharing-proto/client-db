@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS BankCard;
 DROP TABLE IF EXISTS VehicleCategory;
 DROP TABLE IF EXISTS DrivingLicense;
+DROP TABLE IF EXISTS Registration;
 DROP TABLE IF EXISTS Passport;
 DROP TABLE IF EXISTS Client;
 
@@ -107,4 +108,21 @@ CREATE TABLE Passport (
 
     PRIMARY KEY (series_number),
     FOREIGN KEY (client_id) REFERENCES Client (id) 
+);
+
+CREATE TABLE Registration (
+    id INTEGER,
+    passport_series_number TEXT,
+    registration_date DATE NOT NULL,
+    region TEXT NOT NULL,
+    locality TEXT NOT NULL, 
+    street TEXT NOT NULL,
+    building TEXT NOT NULL,
+    unit_code TEXT NOT NULL,
+    unit_name TEXT NOT NULL,
+    photo_link TEXT NOT NULL,
+
+    PRIMARY KEY (id, passport_series_number),
+    FOREIGN KEY (passport_series_number) 
+        REFERENCES Passport (series_number) 
 );
