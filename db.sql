@@ -8,8 +8,7 @@ DROP TABLE IF EXISTS Client;
 CREATE TABLE Client (
     id INTEGER,
     phone_number TEXT CHECK (
-        phone_number REGEXP
-        '^8\d{10}$'
+        phone_number ~ '^8[\d]{10}$'
     ),
     accaunt_status TEXT CHECK (
         accaunt_status IN (
@@ -34,14 +33,12 @@ CREATE TABLE Client (
 
 CREATE TABLE BankCard (
     card_number TEXT CHECK (
-        card_number REGEXP
-        '\d{16}$'
+        card_number ~ '[\d]{16}$'
     ),
     holder_name TEXT NOT NULL,
     validity DATE NOT NULL,
     code TEXT CHECK(
-        code REGEXP
-        '\d{3}$'
+        code  ~ '[\d]{3}$'
     ),
     client_id INTEGER,
     
@@ -51,8 +48,7 @@ CREATE TABLE BankCard (
 
 CREATE TABLE DrivingLicense (
     series_number TEXT CHECK (
-        series_number REGEXP
-        '\d{10}$'
+        series_number ~ '[\d]{10}$'
     ),
     surname TEXT NOT NULL,
     name TEXT NOT NULL,
@@ -64,8 +60,7 @@ CREATE TABLE DrivingLicense (
     issued_by TEXT NOT NULL,
     automatic_transmission BOOLEAN, 
     driving_expirience TEXT CHECK (
-        driving_expirience REGEXP
-        '\d{4}$'
+        driving_expirience ~ '[\d]{4}$'
     ),
     photo_link TEXT NOT NULL,
     client_id INTEGER,
@@ -90,13 +85,11 @@ CREATE TABLE VehicleCategory (
 
 CREATE TABLE Passport (
     series_number TEXT CHECK (
-        series_number REGEXP
-        '\d{10}$'
+        series_number ~ '[\d]{10}$'
     ),
     issued_by TEXT NOT NULL,
     unit_code TEXT CHECK (
-        unit_code REGEXP
-        '\d{6}$'
+        unit_code ~ '[\d]{6}$'
     ),
     surname TEXT NOT NULL,
     name TEXT NOT NULL,
