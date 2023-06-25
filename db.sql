@@ -6,9 +6,12 @@ DROP TABLE IF EXISTS Passport;
 DROP TABLE IF EXISTS Client;
 
 CREATE TABLE Client (
-    id INTEGER,
+    id SERIAL,
     phone_number TEXT CHECK (
         phone_number ~ '^8[\d]{10}$'
+    ),
+    mail TEXT CHECK (
+        mail LIKE '%_@__%.__%'
     ),
     accaunt_status TEXT CHECK (
         accaunt_status IN (
@@ -54,6 +57,7 @@ CREATE TABLE DrivingLicense (
     name TEXT NOT NULL,
     patronymic TEXT NOT NULL,
     birth_date DATE NOT NULL,
+    birth_place TEXT NOT NULL,
     issue_date DATE NOT NULL,
     valid_unitil DATE NOT NULL,
     region TEXT NOT NULL,
@@ -87,6 +91,7 @@ CREATE TABLE Passport (
     series_number TEXT CHECK (
         series_number ~ '[\d]{10}$'
     ),
+    issue_date DATE NOT NULL,
     issued_by TEXT NOT NULL,
     unit_code TEXT CHECK (
         unit_code ~ '[\d]{6}$'
@@ -104,7 +109,7 @@ CREATE TABLE Passport (
 );
 
 CREATE TABLE Registration (
-    id INTEGER,
+    id SERIAL,
     passport_series_number TEXT,
     registration_date DATE NOT NULL,
     region TEXT NOT NULL,
