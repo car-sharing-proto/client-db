@@ -4,7 +4,7 @@ CREATE TABLE Client (
     id INTEGER,
     phone_number TEXT CHECK (
         phone_number REGEXP
-        '^8[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$'),
+        '^8\d{10}$'),
     accaunt_status TEXT CHECK (
         accaunt_status IN (
             'non-activated',
