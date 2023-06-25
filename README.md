@@ -2,13 +2,13 @@
 Сarsharing customer database.
 
 # Data schema
-![](images/relations.jpg | width=300)
+![](images/relations.jpg)
 
 # Passport fields
-![](images/passport.jpg | width=300)
+![](images/passport.jpg)
 
 # Registration fields
-![](images/registration.jpg | width=300)
+![](images/registration.jpg)
 
 # License fields
-![](images/license.jpg | width=300)
+![](images/license.jpg)
